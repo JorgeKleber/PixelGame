@@ -28,6 +28,7 @@ public class GetFruits : MonoBehaviour
             audio.Play();
             item.gameObject.GetComponent<CircleCollider2D>().enabled = false;
             item.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameController.pointCount++;
 
             Destroy(item.gameObject, 0.3f);
         }    
