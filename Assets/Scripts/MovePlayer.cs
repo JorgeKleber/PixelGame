@@ -8,14 +8,14 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] float JumpForce;
     [SerializeField] bool doubleJump;
     private Rigidbody2D rigidbody;
-    private Animator animator;
+    private Animator playerAnimator;
     private bool isJump;
     private bool isRunning;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,19 +31,19 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") > 0f)
         {
-            animator.SetBool("isRunning", true);
+            playerAnimator.SetBool("isRunning", true);
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
         }
 
         if (Input.GetAxis("Horizontal") < 0f)
         {
-            animator.SetBool("isRunning", true);
+            playerAnimator.SetBool("isRunning", true);
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
 
         if (Input.GetAxis("Horizontal") == 0f)
         {
-            animator.SetBool("isRunning", false);
+            playerAnimator.SetBool("isRunning", false);
         }
     }
 
@@ -55,7 +55,7 @@ public class MovePlayer : MonoBehaviour
             {
                 rigidbody.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 doubleJump = true;
-                animator.SetBool("isJump", true);
+                playerAnimator.SetBool("isJump", true);
             }
             else
             {
@@ -73,7 +73,7 @@ public class MovePlayer : MonoBehaviour
         if (player.gameObject.layer == 3)
         {
             isJump = false;
-            animator.SetBool("isJump", false);
+            playerAnimator.SetBool("isJump", false);
         }
     }
 

@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] TMP_Text pointer;
+    [SerializeField] Animator flagAnimator;
     public static int pointCount = 0;
+
 
     void Start()
     {
@@ -16,5 +18,10 @@ public class GameController : MonoBehaviour
     void Update()
     {
         pointer.text = pointCount.ToString();
+
+        if (pointCount == 10)
+        {
+            flagAnimator.SetBool("isFinished", true);
+        }
     }
 }
