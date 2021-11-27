@@ -7,6 +7,7 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] float Speed;
     [SerializeField] float JumpForce;
     [SerializeField] bool doubleJump;
+    [SerializeField] GameObject gameOverScreem;
     private Rigidbody2D rigidbody;
     private Animator playerAnimator;
     private bool isJump;
@@ -74,6 +75,14 @@ public class MovePlayer : MonoBehaviour
         {
             isJump = false;
             playerAnimator.SetBool("isJump", false);
+        }
+
+        if (player.gameObject.layer == 8)
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            gameOverScreem.SetActive(true);
+            Destroy(this);
+
         }
     }
 

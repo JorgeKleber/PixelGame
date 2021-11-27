@@ -10,12 +10,6 @@ public class GameController : MonoBehaviour
     [SerializeField] Animator flagAnimator;
     public static int pointCount = 0;
 
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         pointer.text = pointCount.ToString();
@@ -30,4 +24,11 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
 }
