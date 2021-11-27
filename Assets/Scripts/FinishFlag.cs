@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FinishFlag : MonoBehaviour
 {
+    [SerializeField] string nextSceneName;
+
     /// <summary>
     /// Sent when another object enters a trigger collider attached to this
     /// object (2D physics only).
@@ -11,6 +13,10 @@ public class FinishFlag : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        GameController.LoadNewScene("Scene2");
+        if (string.IsNullOrEmpty(nextSceneName))
+            return;
+
+        GameController.LoadNewScene(nextSceneName);
+        GameController.pointCount = 0;
     }
 }
