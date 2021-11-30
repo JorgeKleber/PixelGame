@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 
     public void ReloadScene()
     {
+        pointCount = 0;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
