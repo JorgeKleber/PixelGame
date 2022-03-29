@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] float Speed;
+    [SerializeField] Vector2 Speed;
     [SerializeField] float JumpForce;
     [SerializeField] bool doubleJump;
     [SerializeField] GameObject gameOverScreem;
@@ -27,8 +27,13 @@ public class MovePlayer : MonoBehaviour
 
     void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * Speed;
+        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0f);
+        //transform.position += movement * Time.deltaTime * Speed;
+
+        if(Input.GetAxis("Horizontal") != 0)
+        {
+            rigidbody.MovePosition(rigidbody.position + Speed * Time.fixedDeltaTime);
+        }
 
         if (Input.GetAxis("Horizontal") > 0f)
         {
